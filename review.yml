@@ -1,0 +1,116 @@
+aid: contractorforeman
+name: Contractor Foreman
+review:
+  question: Does Contractor Foreman expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-03'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Contractor Foreman does not publish a
+    public API reference of any kind - REST, SSE, or WebSocket. The dedicated
+    api.contractorforeman.net subdomain shows only a "Coming soon" placeholder,
+    and the one confirmed API capability (the private key used by the official
+    Zapier app) is described only through Zapier's trigger/action catalog, with
+    no protocol-level detail published. There is no server-push or streaming
+    surface to model in AsyncAPI.
+findings:
+  summary: |
+    Contractor Foreman does not publish a documented public WebSocket API, and
+    in fact does not publish any public developer API reference at all.
+    Contractor Foreman is all-in-one construction management software
+    (estimates, invoicing, scheduling, time cards, daily logs, change orders,
+    job costing) sold as per-company monthly/annual/quarterly subscriptions.
+    The company maintains a dedicated API subdomain, api.contractorforeman.net,
+    but as of this review it displays only a "Coming soon" placeholder with no
+    endpoints, authentication scheme, or reference material - indicating a
+    public API is planned but not yet released. The one confirmed API
+    capability today is a private, account-scoped API key, generated in the
+    application under Settings > Menu > Integration > Zapier, that powers
+    Contractor Foreman's official Zapier app. Zapier's published integration
+    catalog lists seven triggers (Customer Created, Customer Archived, Customer
+    Deleted, Lead Created, Lead Archived, Lead Deleted, File Uploaded) and two
+    actions (Create Customer, Create Lead), which imply create/read/archive/
+    delete operations against Customer and Lead objects plus a file-upload
+    event, but Contractor Foreman does not publish the underlying base URL,
+    endpoint paths, or request/response schemas anywhere. Everything else
+    third-party runs through named native integrations (QuickBooks, Gusto,
+    Google Calendar/Outlook, Stripe, Angi Leads/HomeAdvisor, CompanyCam, MS
+    Project, SweetPay, with Xero announced for mid-2026) or general-purpose
+    Zapier/webhook automation, none of which expose a documented public API
+    surface either. No realtime, bidirectional, or streaming WebSocket
+    (ws:// or wss://) endpoint is documented anywhere on contractorforeman.com,
+    kb.contractorforeman.com, or api.contractorforeman.net.
+  accessModel: |
+    Gated / undisclosed, with a public API "coming soon." There is no
+    developer portal, no self-serve API key signup for third-party
+    integrations, and no published API reference. The only working API
+    surface is the private key tied to the first-party Zapier app, generated
+    per account inside the product and not intended for direct third-party
+    calling outside of Zapier.
+  transports:
+    - protocol: REST
+      scheme: https
+      documented: false
+      note: The Zapier app is almost certainly backed by a private REST API (the setup flow calls it an "API key"), but Contractor Foreman does not publish a base URL, endpoint list, or schema for it.
+    - protocol: Webhook
+      scheme: https
+      documented: true
+      note: Available indirectly via the generic "Webhooks by Zapier" quick-connect and the Zapier trigger/action model, not as a first-party Contractor Foreman webhook system with its own documented payloads.
+    - protocol: Public REST (Planned)
+      scheme: https
+      documented: false
+      note: api.contractorforeman.net resolves and is clearly reserved for a future public API, but shows only a "Coming soon" placeholder as of the review date - no endpoints are live or documented.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented anywhere on contractorforeman.com, kb.contractorforeman.com, api.contractorforeman.net, or the Zapier integration pages.
+  endpointsPubliclyDocumented: []
+  endpointsObservedViaZapier:
+    - Trigger: Customer Created
+    - Trigger: Customer Archived
+    - Trigger: Customer Deleted
+    - Trigger: Lead Created
+    - Trigger: Lead Archived
+    - Trigger: Lead Deleted
+    - Trigger: File Uploaded
+    - Action: Create Customer
+    - Action: Create Lead
+  endpointsNote: |
+    No concrete endpoint paths, base URL, or request/response schemas are
+    published for the private API behind Contractor Foreman's Zapier app.
+    Only the trigger/action names and field lists above are observable, via
+    Zapier's own integration catalog rather than Contractor Foreman
+    documentation. The apis.yml entry for this API is therefore honestly
+    marked endpointsModeled and carries no OpenAPI document, base URL, or
+    fabricated endpoint list.
+sources:
+  - url: https://api.contractorforeman.net/
+    type: Website
+    note: Dedicated API subdomain; page displays only "Coming soon" with no endpoints, auth scheme, or reference material.
+  - url: https://kb.contractorforeman.com/knowledge-base/zapier-integration/
+    type: Documentation
+    note: Knowledge-base article confirming the Zapier setup flow (Menu > Settings > Integration > Zapier) and the API key it issues.
+  - url: https://zapier.com/apps/contractor-foreman/integrations
+    type: Documentation
+    note: Zapier's own catalog listing Contractor Foreman's seven triggers and two actions, used to model endpointsObservedViaZapier.
+  - url: https://contractorforeman.com/features/integrations/
+    type: Documentation
+    note: Lists native integrations (QuickBooks, Gusto, Google Calendar/Outlook, Stripe, Angi Leads, CompanyCam, MS Project, SweetPay, Xero mid-2026) and Zapier as the multi-app connector; no public API mentioned.
+  - url: https://contractorforeman.com/pricing/
+    type: Documentation
+    note: Published monthly/annual/quarterly subscription tiers (Basic, Standard, Plus, Pro, Unlimited) used for plans/contractorforeman-plans-pricing.yml.
+  - url: https://www.linkedin.com/company/contractor-foreman
+    type: LinkedIn
+    note: Official company LinkedIn page.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists, and Contractor Foreman publishes no
+    public REST API reference either - api.contractorforeman.net is reserved
+    but shows only "Coming soon." The apis.yml entry for the Zapier-backed
+    private API is scoped honestly as a modeled, gated capability
+    (endpointsModeled: true) with no baseURL, no OpenAPI document, and no
+    fabricated endpoint list, derived only from Zapier's public trigger/action
+    catalog.

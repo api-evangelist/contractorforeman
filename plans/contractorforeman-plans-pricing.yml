@@ -1,0 +1,230 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Contractor Foreman
+providerId: contractorforeman
+created: '2026-07-03'
+modified: '2026-07-03'
+reconciled: true
+tags:
+- Construction
+- Construction Management
+- Contractor Software
+- Plans
+description: >-
+  Contractor Foreman is sold as a per-company (not strictly per-seat) monthly,
+  quarterly, or annual subscription, with five tiers - Basic, Standard, Plus,
+  Pro, and Unlimited - distinguished primarily by the number of included user
+  accounts and the depth of features (estimating, invoicing, scheduling, time
+  cards, job costing, and so on). There is no usage-based or per-API-call
+  pricing; these are flat software subscription fees. Every tier includes a
+  30-day free trial, and annual plans carry a 100-day money-back guarantee.
+notes: >-
+  Pricing reflects the public rate card at contractorforeman.com/pricing as of
+  the review date and is subject to change; Contractor Foreman periodically
+  runs promotional discounts off these list prices. The Basic tier is not
+  offered on quarterly billing.
+sources:
+- https://contractorforeman.com/pricing/
+- https://contractorforeman.com/
+plans:
+- id: contractorforeman-basic
+  name: Basic
+  type: flat
+  description: >-
+    Entry tier for a single user, covering core project management and basic
+    financials.
+  entries:
+  - label: Monthly Billing
+    name: basic_monthly
+    type: flat
+    metric: users
+    limit: 1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $49/month
+    userMultiplied: false
+  - label: Annual Billing
+    name: basic_annual
+    type: flat
+    metric: users
+    limit: 1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: $588/year ($49/month equivalent)
+    userMultiplied: false
+  elements:
+  - name: Core Project Management
+  - name: Basic Financials
+  - name: 30-Day Free Trial
+- id: contractorforeman-standard
+  name: Standard
+  type: flat
+  description: >-
+    Expanded features and team collaboration for up to three users.
+  entries:
+  - label: Monthly Billing
+    name: standard_monthly
+    type: flat
+    metric: users
+    limit: 3
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $105/month
+    userMultiplied: false
+  - label: Quarterly Billing
+    name: standard_quarterly
+    type: flat
+    metric: users
+    limit: 3
+    timeFrame: quarter
+    geo: global
+    unit: 1
+    price: $395/quarter ($132/month equivalent)
+    userMultiplied: false
+  - label: Annual Billing
+    name: standard_annual
+    type: flat
+    metric: users
+    limit: 3
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: $1,264/year ($105/month equivalent)
+    userMultiplied: false
+  elements:
+  - name: Expanded Feature Set
+  - name: Team Collaboration
+  - name: 30-Day Free Trial
+  - name: 100-Day Money-Back Guarantee (Annual)
+- id: contractorforeman-plus
+  name: Plus
+  type: flat
+  description: >-
+    Advanced tools for up to eight users; described by Contractor Foreman as
+    its most popular tier.
+  entries:
+  - label: Monthly Billing
+    name: plus_monthly
+    type: flat
+    metric: users
+    limit: 8
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $166/month
+    userMultiplied: false
+  - label: Quarterly Billing
+    name: plus_quarterly
+    type: flat
+    metric: users
+    limit: 8
+    timeFrame: quarter
+    geo: global
+    unit: 1
+    price: $619/quarter ($206/month equivalent)
+    userMultiplied: false
+  - label: Annual Billing
+    name: plus_annual
+    type: flat
+    metric: users
+    limit: 8
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: $1,997/year ($166/month equivalent)
+    userMultiplied: false
+  elements:
+  - name: Advanced Tools
+  - name: Most Popular Tier
+  - name: 30-Day Free Trial
+  - name: 100-Day Money-Back Guarantee (Annual)
+- id: contractorforeman-pro
+  name: Pro
+  type: flat
+  description: >-
+    Comprehensive feature suite for larger teams of up to fifteen users.
+  entries:
+  - label: Monthly Billing
+    name: pro_monthly
+    type: flat
+    metric: users
+    limit: 15
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $221/month
+    userMultiplied: false
+  - label: Quarterly Billing
+    name: pro_quarterly
+    type: flat
+    metric: users
+    limit: 15
+    timeFrame: quarter
+    geo: global
+    unit: 1
+    price: $845/quarter ($282/month equivalent)
+    userMultiplied: false
+  - label: Annual Billing
+    name: pro_annual
+    type: flat
+    metric: users
+    limit: 15
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: $2,654/year ($221/month equivalent)
+    userMultiplied: false
+  elements:
+  - name: Comprehensive Feature Suite
+  - name: Larger Team Support
+  - name: 30-Day Free Trial
+  - name: 100-Day Money-Back Guarantee (Annual)
+- id: contractorforeman-unlimited
+  name: Unlimited
+  type: flat
+  description: >-
+    Top tier with an unlimited number of user accounts and the full feature
+    set, for maximum scalability.
+  entries:
+  - label: Monthly Billing
+    name: unlimited_monthly
+    type: flat
+    metric: users
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $332/month
+    userMultiplied: false
+  - label: Quarterly Billing
+    name: unlimited_quarterly
+    type: flat
+    metric: users
+    limit: -1
+    timeFrame: quarter
+    geo: global
+    unit: 1
+    price: $1,245/quarter ($415/month equivalent)
+    userMultiplied: false
+  - label: Annual Billing
+    name: unlimited_annual
+    type: flat
+    metric: users
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: $3,984/year ($332/month equivalent)
+    userMultiplied: false
+  elements:
+  - name: Unlimited Users
+  - name: Full Feature Set
+  - name: 30-Day Free Trial
+  - name: 100-Day Money-Back Guarantee (Annual)
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

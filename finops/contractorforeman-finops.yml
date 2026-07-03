@@ -1,0 +1,93 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Contractor Foreman
+providerId: contractorforeman
+created: '2026-07-03'
+modified: '2026-07-03'
+reconciled: true
+tags:
+- Construction
+- Construction Management
+- Contractor Software
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Contractor Foreman spend. Contractor Foreman is bought as a
+  flat, per-company subscription (Basic, Standard, Plus, Pro, Unlimited),
+  billed monthly, quarterly, or annually and scaled mainly by the number of
+  included user accounts rather than by API or transaction volume. There is no
+  usage-based or per-API-call billing surface, since Contractor Foreman does
+  not publish a public API - the only API-adjacent cost driver is indirect,
+  through the Zapier integration, where task/automation consumption counts
+  against the customer's own Zapier plan rather than a Contractor Foreman
+  meter.
+notes: >-
+  Costs below reflect the public subscription rate card at
+  contractorforeman.com/pricing as of the review date. There is no FOCUS-style
+  usage meter to reconcile because Contractor Foreman's billing is a flat
+  software subscription, not consumption-based API billing.
+sources:
+- https://contractorforeman.com/pricing/
+- https://contractorforeman.com/
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Contractor Foreman
+serviceCategory: Construction Management Software
+billingModel:
+  pricingCategory: Flat Subscription
+  billingFrequency: Monthly, Quarterly, or Annual
+  billingCurrency: USD
+  chargeCategories:
+  - Purchase
+  - Usage
+focusColumns:
+  ServiceName: Contractor Foreman
+  ServiceCategory: Construction Management Software
+  ProviderName: Contractor Foreman
+  PublisherName: Contractor Foreman
+  InvoiceIssuerName: Contractor Foreman
+  BillingCurrency: USD
+  ChargeCategory: Purchase
+  PricingCategory: Flat Subscription
+meters:
+- name: subscription_tier
+  description: Flat monthly/quarterly/annual subscription fee for the selected plan tier (Basic, Standard, Plus, Pro, Unlimited).
+  unit: subscription
+  aggregation: sum
+  dimensions:
+  - account
+  - plan_tier
+  - billing_frequency
+- name: included_users
+  description: Number of user accounts included in the selected plan tier, from 1 (Basic) to unlimited (Unlimited).
+  unit: users
+  aggregation: max
+  dimensions:
+  - account
+  - plan_tier
+- name: zapier_task_usage
+  description: Automation tasks consumed when triggers/actions run through the Contractor Foreman Zapier app; metered and billed by Zapier, not by Contractor Foreman.
+  unit: tasks
+  aggregation: sum
+  dimensions:
+  - account
+  - zap
+principles:
+- name: Visibility
+  description: Track which plan tier and billing frequency (monthly/quarterly/annual) each company account is on, since cost is driven by tier choice rather than usage.
+- name: Allocation
+  description: Map the Contractor Foreman subscription to the office/back-office cost center, since seats are shared across a company account rather than billed per project.
+- name: Optimization
+  description: Right-size the tier to actual user-account needs, prefer annual billing for the discount and 100-day money-back guarantee, and use the 30-day free trial before committing.
+- name: Accountability
+  description: Assign subscription ownership to office administration; review the plan tier annually against active user counts and Zapier automation usage.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

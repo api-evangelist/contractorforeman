@@ -1,0 +1,66 @@
+aid: contractorforeman
+url: https://raw.githubusercontent.com/api-evangelist/contractorforeman/refs/heads/main/apis.yml
+name: Contractor Foreman
+kind: company
+description: Contractor Foreman is all-in-one construction management software for
+  contractors - estimates, invoicing, scheduling, time cards, daily logs, change
+  orders, and job costing - used by contractors in more than 75 countries. There
+  is no self-serve public developer API or public API reference; the company's
+  dedicated API subdomain (api.contractorforeman.net) displays only a "Coming
+  soon" placeholder as of this review. The one confirmed API capability is a
+  private, account-scoped API key (generated under Settings > Integration >
+  Zapier) that powers Contractor Foreman's official Zapier app, exposing Customer
+  and Lead create/archive/delete triggers and actions plus a File Uploaded
+  trigger. That key and its underlying endpoints are not documented or published
+  for direct third-party use outside the Zapier integration; broader third-party
+  connectivity otherwise runs through native integrations (QuickBooks, Gusto,
+  Google Calendar/Outlook, Stripe, Angi Leads, CompanyCam, MS Project, SweetPay)
+  and Zapier/webhook automation rather than an open API.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Construction
+- Construction Management
+- Contractor Software
+- Estimating
+- Invoicing
+- Scheduling
+created: '2026-07-03'
+modified: '2026-07-03'
+specificationVersion: '0.19'
+apis:
+- aid: contractorforeman:contractorforeman-zapier-automation-api
+  name: Contractor Foreman Zapier Automation API
+  tags:
+  - Leads
+  - Customers
+  - Automation
+  - Zapier
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://kb.contractorforeman.com/knowledge-base/zapier-integration/
+  properties:
+  - url: https://kb.contractorforeman.com/knowledge-base/zapier-integration/
+    type: Documentation
+  - url: https://zapier.com/apps/contractor-foreman/integrations
+    type: Documentation
+  description: A private, account-scoped REST API reached with an API key generated
+    under Settings > Integration > Zapier, used to power Contractor Foreman's
+    official Zapier app rather than published for general developer use.
+    Capabilities confirmed through Zapier's published trigger/action catalog
+    include creating, archiving, and deleting Customer records; creating,
+    archiving, and deleting Lead records; and a File Uploaded trigger for
+    documents attached to a project. No base URL, endpoint paths, or
+    request/response schemas are publicly documented by Contractor Foreman
+    itself, so this API is modeled from Zapier's integration catalog only.
+  endpointsModeled: true
+common:
+- type: LinkedIn
+  url: https://www.linkedin.com/company/contractor-foreman
+- type: Website
+  url: https://contractorforeman.com/
+- type: Documentation
+  url: https://kb.contractorforeman.com/
+- type: Plans
+  url: plans/contractorforeman-plans-pricing.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
