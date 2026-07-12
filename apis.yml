@@ -53,6 +53,8 @@ apis:
     itself, so this API is modeled from Zapier's integration catalog only.
   endpointsModeled: true
 common:
+- type: DomainSecurity
+  url: security/contractorforeman-domain-security.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/contractor-foreman
 - type: Website
