@@ -16,7 +16,19 @@ description: Contractor Foreman is all-in-one construction management software f
   connectivity otherwise runs through native integrations (QuickBooks, Gusto,
   Google Calendar/Outlook, Stripe, Angi Leads, CompanyCam, MS Project, SweetPay)
   and Zapier/webhook automation rather than an open API.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: unknown
+  trial: true
+  try_now: false
+  public: false
+  label: Paid (free trial)
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/contractorforeman.png
 tags:
 - Construction
 - Construction Management
